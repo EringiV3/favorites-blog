@@ -7,10 +7,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
-import styles from './tailwind.css';
+import globalStyles from './global.css';
+import tailwindStyles from './tailwind.css';
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: styles },
+  { rel: 'stylesheet', href: tailwindStyles },
+  { rel: 'stylesheet', href: globalStyles },
   {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap',
@@ -27,6 +29,10 @@ export const links: LinksFunction = () => [
     rel: 'preconnect',
     href: 'https://fonts.gstatic.com',
     crossOrigin: 'anonymous',
+  },
+  {
+    rel: 'stylesheet',
+    href: 'https://unpkg.com/swiper@8/swiper-bundle.min.css',
   },
 ];
 

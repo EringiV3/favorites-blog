@@ -1,6 +1,9 @@
 import type { LoaderFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
+import { Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { ArrowLeftIcon } from '../../components/ArrowLeftIcon';
+import { LinkIcon } from '../../components/LinkIcon';
 import { microcmsClient } from '../../lib/microcms.server';
 import type { ArticleResponse } from '../../types';
 
@@ -24,7 +27,48 @@ export default function ArticleDetail() {
           <div>back</div>
         </a>
       </div>
-      <div className="mt-14">hoge</div>
+      <div className="mt-14 px-4 flex flex-col gap-8">
+        <div>
+          <Swiper
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            pagination={true}
+            modules={[Pagination]}
+          >
+            {article.pictures.map((v) => (
+              <SwiperSlide
+                key={v.picture.url}
+                className="flex justify-center items-center"
+              >
+                <picture className="overflow-hidden rounded-full">
+                  <source
+                    srcSet={`${v.picture.url}?fit=crop&w=500&h=500`}
+                    media="(min-width: 768px)"
+                  />
+                  <img src={`${v.picture.url}?fit=crop&w=400&h=400`} alt="" />
+                </picture>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="mt-4 md:mx-14">
+          <h1 className="font-bold text-2xl">{article.title}</h1>
+          <div className="mt-8">{article.content}</div>
+          {article.linkUrl && (
+            <div className="mt-8 flex gap-2 items-center">
+              <LinkIcon />
+              <a
+                href={article.linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 no-underline hover:underline"
+              >
+                {article.linkText ? article.linkText : article.linkUrl}
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
