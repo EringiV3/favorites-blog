@@ -70,7 +70,7 @@ export default function ArticleDetail() {
         <div className="mt-4 md:mx-14">
           <h1 className="font-bold text-2xl">{article.title}</h1>
           <div
-            className="mt-8 prose"
+            className="mt-8 pb-10 prose"
             dangerouslySetInnerHTML={{
               __html: article.content,
             }}

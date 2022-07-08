@@ -51,13 +51,13 @@ export default function Index() {
       </div>
       <div className="mt-24 flex flex-col gap-8">
         {articles.map((v) => (
-          <div key={v.id} className="flex">
+          <div key={v.id} className="flex gap-6">
             <div className="text-gray-500">
               {dayjs.utc(v.publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}
             </div>
             <a
               href={`/articles/${v.id}`}
-              className="pl-5 no-underline hover:underline"
+              className="no-underline hover:underline"
             >
               {v.title}
             </a>
