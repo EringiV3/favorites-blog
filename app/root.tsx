@@ -16,6 +16,10 @@ export const links: LinksFunction = () => [
     href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap',
   },
   {
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap',
+  },
+  {
     rel: 'preconnect',
     href: 'https://fonts.googleapis.com',
   },
