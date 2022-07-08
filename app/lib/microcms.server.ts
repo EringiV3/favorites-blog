@@ -2,8 +2,8 @@ import { createClient } from 'microcms-js-sdk';
 import type { ListContentPaginationInfo } from '../types';
 
 export const microcmsClient = createClient({
-  serviceDomain: MICROCMS_SERVICE_DOMAIN,
-  apiKey: MICROCMS_API_KEY,
+  serviceDomain: 'uz70goojl3',
+  apiKey: '2b8b449addcd4871877b4bdcf141ed7d7ee0', // read only なAPIキーなので露出してもOK
 });
 
 export const getAllContents = async <T extends ListContentPaginationInfo>(
