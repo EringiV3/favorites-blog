@@ -22,7 +22,7 @@ export default function Index() {
       <h1 className="flex justify-center font-bold text-3xl mt-24">
         eringiv3 favorites
       </h1>
-      <div className="flex justify-center pt-6 ">
+      <div className="flex justify-center pt-10 ">
         <a
           href="https://twitter.com/Eringi_V3"
           target="_blank"
@@ -36,12 +36,12 @@ export default function Index() {
       <div className="mt-24 flex flex-col gap-8">
         {articles.map((v) => (
           <div key={v.id} className="flex">
-            <div>
+            <div className="text-gray-500">
               {dayjs.utc(v.publishedAt).tz('Asia/Tokyo').format('YYYY-MM-DD')}
             </div>
             <a
               href={`/articles/${v.id}`}
-              className="pl-5 text-blue-500 no-underline hover:underline"
+              className="pl-5 no-underline hover:underline"
             >
               {v.title}
             </a>

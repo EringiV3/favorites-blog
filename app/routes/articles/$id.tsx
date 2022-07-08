@@ -27,7 +27,7 @@ export default function ArticleDetail() {
           <div>back</div>
         </a>
       </div>
-      <div className="mt-14 px-4 flex flex-col gap-8">
+      <article className="mt-14 px-4 flex flex-col gap-8">
         <div>
           <Swiper
             onSlideChange={() => console.log('slide change')}
@@ -53,7 +53,12 @@ export default function ArticleDetail() {
         </div>
         <div className="mt-4 md:mx-14">
           <h1 className="font-bold text-2xl">{article.title}</h1>
-          <div className="mt-8">{article.content}</div>
+          <div
+            className="mt-8 prose"
+            dangerouslySetInnerHTML={{
+              __html: article.content,
+            }}
+          ></div>
           {article.linkUrl && (
             <div className="mt-8 flex gap-2 items-center">
               <LinkIcon />
@@ -68,7 +73,7 @@ export default function ArticleDetail() {
             </div>
           )}
         </div>
-      </div>
+      </article>
     </div>
   );
 }
