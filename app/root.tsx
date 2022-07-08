@@ -34,6 +34,10 @@ export const links: LinksFunction = () => [
     rel: 'stylesheet',
     href: 'https://unpkg.com/swiper@8/swiper-bundle.min.css',
   },
+  {
+    rel: 'icon',
+    href: '/favicon.png',
+  },
 ];
 
 export const meta: MetaFunction = () => ({

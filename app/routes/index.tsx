@@ -1,5 +1,6 @@
-import type { LoaderFunction } from '@remix-run/cloudflare';
+import type { LoaderFunction, MetaFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
+import { SITE_URL } from '../config/constants';
 import { dayjs } from '../lib/dayjs';
 import { getAllContents } from '../lib/microcms.server';
 import type { ArticleResponse, ListContentsResponse } from '../types';
@@ -12,6 +13,21 @@ export const loader: LoaderFunction = async () => {
   );
   const allArticles = allArticleResponse.flatMap((v) => v.contents);
   return allArticles;
+};
+
+export const meta: MetaFunction = ({ data, params, location }) => {
+  return {
+    title: `eringiv3 favorites`,
+    description: 'eringiv3のお気に入りのモノをあつめたサイト',
+    'og:url': `${SITE_URL}${location.pathname}`,
+    'og:title': `eringiv3 favorites`,
+    'og:description': 'eringiv3のお気に入りのモノをあつめたサイト',
+    'og:image': `${SITE_URL}/ogp.png`,
+    'og:site_name': 'eringiv3 favorites',
+    'twitter:card': 'summary_large_image',
+    'twitter:creator': '@eringi_v3',
+    'twitter:site': '@eringi_v3',
+  };
 };
 
 export default function Index() {

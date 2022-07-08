@@ -1,9 +1,10 @@
-import type { LoaderFunction } from '@remix-run/cloudflare';
+import type { LoaderFunction, MetaFunction } from '@remix-run/cloudflare';
 import { useLoaderData } from '@remix-run/react';
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ArrowLeftIcon } from '../../components/ArrowLeftIcon';
 import { LinkIcon } from '../../components/LinkIcon';
+import { SITE_URL } from '../../config/constants';
 import { microcmsClient } from '../../lib/microcms.server';
 import type { ArticleResponse } from '../../types';
 
@@ -14,10 +15,25 @@ export const loader: LoaderFunction = async ({ params }) => {
   return article;
 };
 
+export const meta: MetaFunction = ({ data, params, location }) => {
+  const article: ArticleResponse = data;
+
+  return {
+    title: `${article.title} | eringiv3 favorites`,
+    description: 'eringiv3のお気に入りのモノをあつめたサイト',
+    'og:url': `${SITE_URL}${location.pathname}`,
+    'og:title': article.title,
+    'og:description': 'description',
+    'og:image': article.pictures[0].picture.url,
+    'og:site_name': 'eringiv3 favorites',
+    'twitter:card': 'summary_large_image',
+    'twitter:creator': '@eringi_v3',
+    'twitter:site': '@eringi_v3',
+  };
+};
+
 export default function ArticleDetail() {
   const article = useLoaderData<ArticleResponse>();
-
-  console.log({ article });
 
   return (
     <div>
