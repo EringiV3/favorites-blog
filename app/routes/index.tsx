@@ -17,5 +17,9 @@ export default function Index() {
   const articles = useLoaderData<ArticleResponse[]>();
 
   console.log({ articles });
-  return <div className="container mx-auto px-4">hogee</div>;
+  return (
+    <div className="container mx-auto px-4">
+      <h1 className="flex justify-center font-bold">eringiv3 favorites 07</h1>
+    </div>
+  );
 }
