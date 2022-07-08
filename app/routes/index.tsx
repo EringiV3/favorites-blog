@@ -1,4 +1,22 @@
+import type { LoaderFunction } from '@remix-run/cloudflare';
+import { useLoaderData } from '@remix-run/react';
+import { getAllContents } from '../lib/microcms.server';
+import type { ArticleResponse, ListContentsResponse } from '../types';
+
+type ArticleListResponse = ListContentsResponse<ArticleResponse>;
+
+export const loader: LoaderFunction = async () => {
+  const allArticleResponse = await getAllContents<ArticleListResponse>(
+    'articles'
+  );
+  const allArticles = allArticleResponse.flatMap((v) => v.contents);
+  return allArticles;
+};
+
 export default function Index() {
+  const articles = useLoaderData<ArticleResponse[]>();
+
+  console.log({ articles });
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <h1>Welcome to eringiv3 favorites!</h1>
