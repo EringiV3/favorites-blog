@@ -1,6 +1,6 @@
 name = "favorites"
 
-account_id = ""
+account_id = "6f20a711af042a8f55f948ccb060e21b"
 workers_dev = true
 main = "./build/index.js"
 # https://developers.cloudflare.com/workers/platform/compatibility-dates
